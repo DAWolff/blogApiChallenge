@@ -1,0 +1,23 @@
+{
+  "name": "blogapichallenge",
+  "version": "1.0.0",
+  "description": "blog api with routing",
+  "main": "blogRouter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DAWolff/blogApiChallenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DAWolff/blogApiChallenge/issues"
+  },
+  "homepage": "https://github.com/DAWolff/blogApiChallenge#readme",
+  "dependencies": {
+    "uuid": "^3.1.0"
+  }
+}
