@@ -4,7 +4,7 @@
   "description": "blog api with routing",
   "main": "blogRouter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node server.js"
   },
   "repository": {
@@ -22,5 +22,8 @@
     "express": "^4.15.4",
     "morgan": "^1.8.2",
     "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.3"
   }
 }
