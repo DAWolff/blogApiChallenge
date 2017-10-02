@@ -2,10 +2,10 @@
   "name": "blogapichallenge",
   "version": "1.0.0",
   "description": "blog api with routing",
-  "main": "blogRouter.js",
+  "main": "server.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha ./test"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "mocha": "^3.5.3"
   }
 }
