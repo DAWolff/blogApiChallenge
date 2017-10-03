@@ -13,7 +13,7 @@ var blogTemplate = (
   '</li>'
 );
 
-var serverBase = '//localhost:8080/';
+var serverBase = '/';
 var BLOG_URL = serverBase + 'blog-posts';
 
 

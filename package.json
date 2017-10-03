@@ -1,5 +1,5 @@
 {
-  "name": "blogapichallenge",
+  "name": "blog-api-challenge",
   "version": "1.0.0",
   "description": "blog api with routing",
   "main": "server.js",
