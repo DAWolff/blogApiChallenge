@@ -49,7 +49,7 @@ describe('Blog API', function() {
         res.body.length.should.be.at.least(1);
         // each item should be an object with key/value pairs
         // for `title`, `content` and `author`.
-        const expectedKeys = ['title', 'content', 'author'];
+        const expectedKeys = ['title', 'content', 'author', 'publishDate'];
         res.body.forEach(function(item) {
           item.should.be.a('object');
           item.should.include.keys(expectedKeys);
@@ -74,7 +74,8 @@ describe('Blog API', function() {
         res.body.id.should.not.be.null;
         // response should be deep equal to `newItem` from above if we assign
         // `id` to it from `res.body.id`
-        res.body.should.deep.equal(Object.assign(newItem, {id: res.body.id}));
+        // res.body.should.deep.equal(Object.assign(newItem, {id: res.body.id}));
+        res.body.should.deep.equal(Object.assign(newItem, {id: res.body.id, publishDate: res.body.publishDate}));
       });
   });
 
