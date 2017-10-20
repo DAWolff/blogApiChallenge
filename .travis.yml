@@ -1,7 +1,2 @@
 language: node_js
 node_js: node
-deploy:
-  provider: heroku
-  app: stark-escarpment-32734
-  on:
-    repo: DAWolff/blogApiChallenge
