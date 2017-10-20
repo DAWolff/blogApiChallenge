@@ -25,8 +25,7 @@ const BlogPosts = {
       author: author,
       publishDate: publishDate || Date.now()
     };
-    this.items[post.id] = post;
-    // this.items.push(post);
+    this.items.push(post);
     return post;
   },
   get: function(id=null) {

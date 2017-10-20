@@ -102,6 +102,7 @@ describe('Blog API', function() {
       .get('/blog-posts')
       .then(function(res) {
         updateData.id = res.body[0].id;
+
         // this will return a promise whose value will be the response
         // object, which we can inspect in the next `then` back. Note
         // that we could have used a nested callback here instead of
