@@ -30,7 +30,7 @@ describe('Blog API', function() {
   });
 
   // test strategy:
-  //   1. make request to `/blog-posts`
+  //   1. make request to `/posts`
   //   2. inspect response object and prove has right code and have
   //   right keys in response object.
   it('should list items on GET', function() {
@@ -39,7 +39,7 @@ describe('Blog API', function() {
     // at the end of the test. The `chai.request(server).get...` call is asynchronous
     // and returns a Promise, so we just return it.
     return chai.request(app)
-      .get('/blog-posts')
+      .get('/posts')
       .then(function(res) {
         res.should.have.status(200);
         res.should.be.json;
@@ -62,9 +62,10 @@ describe('Blog API', function() {
   //  2. inspect response object and prove it has right
   //  status code and that the returned object has an `id`
   it('should add an item on POST', function() {
-    const newItem = {title: 'Garfield and Psychoanalysis', content: 'Lorem ipsum dolor sit amet, quod tantas labore ut his, mei ea nominati delicatissimi, ut sit malis errem definitiones. Has id harum vivendum persecuti, sed dicant menandri in. In delicata definiebas pri, mei libris appareat adipisci no, errem detraxit neglegentur at per. Nec ridens democritum liberavisse at. Magna errem legimus ei historum.', author: 'Sigmund Freud'}
+    const newItem = {title: 'Garfield and Psychoanalysis', content: 'Lorem ipsum dolor sit amet, quod tantas labore ut his, mei ea nominati delicatissimi, ut sit malis errem definitiones. Has id harum vivendum persecuti, sed dicant menandri in. In delicata definiebas pri, mei libris appareat adipisci no, errem detraxit neglegentur at per. Nec ridens democritum liberavisse at. Magna errem legimus ei historum.',
+    author: {firstName: 'Sigmund', lastName: 'Freud'} };
     return chai.request(app)
-      .post('/blog-posts')
+      .post('/posts')
       .send(newItem)
       .then(function(res) {
         res.should.have.status(201);
@@ -94,12 +95,12 @@ describe('Blog API', function() {
     const updateData = {
       title: 'Foobar Garfield Mayday',
       content: 'n delicata definiebas pri, mei libris appareat adipisci no, errem detraxit neglegentur at per. Nec ridens democritum liberavisse at.',
-      author: 'Johnny Carson'
+      author: {firstName: 'johnny', lastName: 'Carson'}
     };
 
     return chai.request(app)
       // first have to get so we have an idea of object to update
-      .get('/blog-posts')
+      .get('/posts')
       .then(function(res) {
         updateData.id = res.body[0].id;
 
@@ -109,7 +110,7 @@ describe('Blog API', function() {
         // returning a promise and chaining with `then`, but we find
         // this approach cleaner and easier to read and reason about.
         return chai.request(app)
-          .put(`/blog-posts/${updateData.id}`)
+          .put(`/posts/${updateData.id}`)
           .send(updateData);
       })
       // prove that the PUT request has right status code
@@ -126,10 +127,10 @@ describe('Blog API', function() {
     return chai.request(app)
       // first have to get so we have an `id` of item
       // to delete
-      .get('/blog-posts')
+      .get('/posts')
       .then(function(res) {
         return chai.request(app)
-          .delete(`/blog-posts/${res.body[0].id}`);
+          .delete(`/posts/${res.body[0].id}`);
       })
       .then(function(res) {
         res.should.have.status(204);
