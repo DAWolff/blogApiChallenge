@@ -61,7 +61,7 @@ app.post('/posts', (req, res) => {
   //           "author": {
   //           "firstName": "Sarah",
   //           "lastName": "Clarke" }
-  const requiredFields = ['title', 'content', 'author.firstName', 'author.lastName'];
+  const requiredFields = ['title', 'content', 'author'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -75,8 +75,7 @@ app.post('/posts', (req, res) => {
     .create({
       title: req.body.title,
       content: req.body.content,
-      firstName: req.body.author.firstName,
-      lastName: req.body.author.lastName})
+      author: req.body.author})
     .then(
       blog => res.status(201).json(blog.apiRepr()))
     .catch(err => {
