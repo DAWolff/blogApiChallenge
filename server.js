@@ -1,10 +1,10 @@
 
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const {PORT, DATABASE_URL} = require('./config');
 const {Blog} = require('./models');
-// const blogRouter = require('./blogRouter');
 const router = express.Router();
 
 const app = express();
