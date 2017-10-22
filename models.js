@@ -11,7 +11,7 @@ const blogPostSchema = mongoose.Schema({
   publishDate: {type: Date}
 });
 
-blogPostSchema.virtual('author').get(function() {
+blogPostSchema.virtual('authorName').get(function() {
   return `${this.author.firstName} ${this.author.lastName}`.trim()});
 
 blogPostSchema.virtual('created').get(function() {
@@ -24,7 +24,7 @@ blogPostSchema.methods.apiRepr = function() {
   return {
     title: this.title,
     content: this.content,
-    author: this.author,
+    author: this.authorName,
     created: this.created
   };
 }
