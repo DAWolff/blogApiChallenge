@@ -3,6 +3,8 @@ const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
 const {PORT, DATABASE_URL} = require('../config');
 const {Blog} = require('../models');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const {app, runServer, closeServer} = require('../server');
 
@@ -14,6 +16,8 @@ const should = chai.should();
 // This let's us make HTTP requests
 // in our tests.
 // see: https://github.com/chaijs/chai-http
+app.use(bodyParser.json());
+app.use(morgan('common'));
 chai.use(chaiHttp);
 
 
@@ -47,8 +51,6 @@ describe('Blog API', function() {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('array');
-
-        // because we create two items on app load
         res.body.length.should.be.at.least(1);
         // each item should be an object with key/value pairs
         // for `title`, `content` and `author`.
