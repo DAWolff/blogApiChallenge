@@ -1,8 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
-const {PORT, DATABASE_URL} = require('./config');
-const {Blog} = require('./models');
+const {PORT, DATABASE_URL} = require('../config');
+const {Blog} = require('../models');
 
 const {app, runServer, closeServer} = require('../server');
 
