@@ -1,5 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const mongoose = require('mongoose');
+const {PORT, DATABASE_URL} = require('./config');
+const {Blog} = require('./models');
 
 const {app, runServer, closeServer} = require('../server');
 
@@ -49,7 +52,7 @@ describe('Blog API', function() {
         res.body.length.should.be.at.least(1);
         // each item should be an object with key/value pairs
         // for `title`, `content` and `author`.
-        const expectedKeys = ['title', 'content', 'author', 'publishDate'];
+        const expectedKeys = ['title', 'content', 'author'];
         res.body.forEach(function(item) {
           item.should.be.a('object');
           item.should.include.keys(expectedKeys);
@@ -95,7 +98,7 @@ describe('Blog API', function() {
     const updateData = {
       title: 'Foobar Garfield Mayday',
       content: 'n delicata definiebas pri, mei libris appareat adipisci no, errem detraxit neglegentur at per. Nec ridens democritum liberavisse at.',
-      author: {firstName: 'johnny', lastName: 'Carson'}
+      author: {firstName: 'Johnny', lastName: 'Carson'}
     };
 
     return chai.request(app)
