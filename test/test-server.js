@@ -16,7 +16,7 @@ const should = chai.should();
 // This let's us make HTTP requests
 // in our tests.
 // see: https://github.com/chaijs/chai-http
-app.use(bodyParser.json());
+app.use(bodyParser);
 app.use(morgan('common'));
 chai.use(chaiHttp);
 
@@ -48,6 +48,7 @@ describe('Blog API', function() {
     return chai.request(app)
       .get('/posts')
       .then(function(res) {
+        console.log("res body = ", JSON.stringify(res.body));
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('array');
